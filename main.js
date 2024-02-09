@@ -36,42 +36,29 @@ document.addEventListener('DOMContentLoaded',()=>{
 })
 
 input.addEventListener('input',()=>{
-    let optionValue = select.value.toLowerCase()
     let filter = input.value
     let cards = document.querySelectorAll('.card');
 
     if (filter !='' && optionValue == 'qualquer região') {
         for (let card of cards) {
-            let title = card.querySelector('h3').textContent.toLowerCase()
-            let filterText = filter.toLowerCase()
+            let h3 = card.querySelector('h3').textContent.toLowerCase()
+            let inputValue = filter.toLowerCase()
             
-            if (!title.includes(filterText)) {
-             card.style.display = 'none'
+            if (!h3.includes(inputValue)) {
+                card.style.display = 'none'
              
             } else {
-             card.style.display = 'block'
+                card.style.display = 'block'
             }
         }
-    } else if (filter != '' &&  optionValue != 'qualquer região') {
+
+    } else if(filter !='' && optionValue != 'qualquer região'){
         for (let card of cards) {
-           let title = card.querySelector('h3').textContent.toLowerCase()
-           let filterText = filter.toLowerCase()
-           
-           if (!title.includes(filterText) || !card.classList.contains('rg')) {
-            card.style.display = 'none'
             
-           } else {
-            card.style.display = 'block'
-           }
-           card.classList.remove('rg')
-        }
-    } else {
-        for (let card of cards) {
-            card.style.display = 'block'
+    
         }
     }
 })
-
 
 select.addEventListener('change',()=>{
     let optionValue = select.value.toLowerCase()
@@ -82,7 +69,7 @@ select.addEventListener('change',()=>{
         if (optionValue !== 'qualquer região') {
             if (optionValue === region) {
                 card.style.display = 'block'
-                card.classList.toggle('rg')
+               
             } else {
                 card.style.display = 'none'
             }
@@ -91,4 +78,3 @@ select.addEventListener('change',()=>{
         }
     }
 })
-
