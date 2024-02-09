@@ -67,6 +67,10 @@ input.addEventListener('input',()=>{
                 card.style.display = 'none'   
             }
         }
+    } else{
+        for (const card of cards) {
+            card.style.display = 'block'
+        }
     }
 })
 
